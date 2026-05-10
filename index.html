@@ -6,7 +6,7 @@
     <title>Sistema de tarefas</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="src/jquery-4.0.0.min.js" defer></script>
-    <script src="src/script.js" defer ></script>
+    <script src="src/app.js" defer ></script>
     <link rel="stylesheet" href="/libs/bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -28,44 +28,51 @@
    
     <div class="container my-5 border shadow-lg">
         <div class="row">
-            <div class="col-12">
-                <h2 class="text-center text-primary">Adicionar uma tarefa</h2>
-            </div>
-            <div class="col-12">
-                <label class="form-label fs-4 me-3 text-primary fw-bold" id="titulo">Titulo da tarefa</label>
-                <input type="text" class="form-control">
-            </div>
-            <div class="col-12">
-                <label class="form-label fs-4 me-3 text-primary fw-bold" id="descricao">Descrição</label>
-                <input type="text" class="form-control" placeholder="Opcional">
-            </div>          
-            <div class="col-12">
-                <label class="form-label fs-4 me-3 text-primary fw-bold">Prioridade</label>
-            </div>
-            <div class="col-12">
-                <input type="radio" class="form-check-input" name="prioridade" value="baixa">
-                <label class="form-label fs-6 me-3">Baixa</label>
-                <input type="radio" class="form-check-input" name="prioridade" value="media">
-                <label class="form-label fs-6 me-3">Média</label>
-                <input type="radio" class="form-check-input" name="prioridade" value="baixa">
-                <label class="form-label fs-6 me-3">Alta</label>
-            </div>
-            <div class="col-12">
-                <label class="form-label fs-4 me-3 mb-4 text-primary fw-bold" id="data">Data limite</label>
-                <input type="date" class="form-control">
-            </div>
-            <div class="col-12">
-                 <label class="form-label fs-4 me-3 mb-4 text-primary fw-bold">Status</label>
-                <select class="form-select">
-                    <option value="pendente">Pendente</option>
-                    <option value="concluida">Concluída</option>
-                </select>
-            </div>
-            <div class="col-12 mt-4">
-                <button class="btn btn-outline-primary" id="observacao" onclick="AdicionarObservacao()">Observação</button>
-            </div>
+                <form id="formTarefa">
+                    <div class="col-12">
+                    <h2 class="text-center text-primary">Adicionar uma tarefa</h2>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fs-4 me-3 text-primary fw-bold">Titulo da tarefa</label>
+                    <input type="text" id="titulo" class="form-control" required>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fs-4 me-3 text-primary fw-bold">Descrição</label>
+                    <input type="text" class="form-control" id="descricao" placeholder="Opcional">
+                </div>          
+                <div class="col-12">
+                    <label class="form-label fs-4 me-3 text-primary fw-bold">Prioridade</label>
+                </div>
+                <div class="col-12">
+                    <input type="radio" class="form-check-input" name="prioridade" value="baixa">
+                    <label class="form-label fs-6 me-3">Baixa</label>
+                    <input type="radio" class="form-check-input" name="prioridade" value="media">
+                    <label class="form-label fs-6 me-3">Média</label>
+                    <input type="radio" class="form-check-input" name="prioridade" value="alta">
+                    <label class="form-label fs-6 me-3">Alta</label>
+                </div>
+                <div class="col-12">
+                    <label class="form-label fs-4 me-3 mb-4 text-primary fw-bold">Data limite</label>
+                    <input type="date" class="form-control" id="data">
+                </div>
+                <div class="col-12">
+                    <label class="form-label fs-4 me-3 mb-4 text-primary fw-bold">Status</label>
+                    <select class="form-select" id="status">
+                        <option value="pendente">Pendente</option>
+                        <option value="concluida">Concluída</option>
+                    </select>
+                </div>
+                <div class="col-12 mt-4">
+                    <button class="btn btn-outline-primary" type="button" id="btnObservacao" onclick="AdicionarObservacao()">Adicionar observação</button>
+                </div>
+                <div id="areaObservacao"></div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-danger">Enviar</button>
+                </div>
+            </form>
         </div>
     </div>
 
+    <div id="areaTabela"></div>
 </body>
 </html>
